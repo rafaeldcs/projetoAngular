@@ -1,0 +1,39 @@
+<form>
+
+ <div class="mb-3">
+    <label for="nome" class="form-label mb-3">Nome</label>
+    <input name="nome" type="text"  class="form-control" [(ngModel)]="pessoa.nome" >
+  </div>
+
+  <div class="mb-3">
+    <label for="CPF" class="form-label mb-3">CPF</label>
+    <input name="CPF" type="text"  class="form-control" [(ngModel)]="pessoa.cpf" >
+  </div>
+
+  <div class="mb-3">
+    <label for="idade" class="form-label mb-3">idade</label>
+    <input name="idade" type="text"  class="form-control" [(ngModel)]="pessoa.idade" >
+  </div>
+
+
+  <div class="mb-3">
+  <label for="contatoId" class="form-label mb-3">Contato</label>
+  <select name="contatoId" id="contatoId" class="form-control" [(ngModel)]="pessoa.contatoId" >
+      <option *ngFor="let tipo of  contatosList$|async"
+          [value]="tipo.id">
+          {{tipo.id}} . {{tipo.tipoContato}}
+      </option>
+  </select>
+
+  </div>
+
+        <button (click)="addPessoa(pessoa)" *ngIf="pessoa.id==0" class="btn btn-primary">
+          Salvar
+        </button>
+
+        <button (click)="updatePessoa(pessoa)" *ngIf="pessoa.id!=0" class="btn btn-primary">
+          Atualizar
+        </button>
+
+
+</form>
